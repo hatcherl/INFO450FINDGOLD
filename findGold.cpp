@@ -1,11 +1,10 @@
 #include <iostream>
 using namespace std;
 
-
+int const SIZE = 10;
 void message();
 void displayBoard();
-void gameBoard();
-int const SIZE = 10;
+void gameBoard(char gameBoardInfo[SIZE][SIZE]);
 
 int main()
 {
@@ -115,6 +114,8 @@ int main()
 
 		} while (guesses != 0 && gameOver == false);
 
+		gameBoard(gameBoardArray);
+
 		cout << "Please type in 'y' if you want to continue. If not type in any other character." << endl;
 		cin >> response;
 
@@ -179,8 +180,63 @@ void displayBoard()
 	}
 };
 
-void gameBoard() 
+void gameBoard(char gameBoardInfo[SIZE][SIZE]) 
 {
+	int countX = 1;//these are used to make sure they reset at end of each iteration of the game
+	int countY = 1;
 
+	/* I did the same with the code for my displayBoard function however I also added in else if statements for 
+	the found gold, F, gold, G, and bomb, B so that they display. Also the ?  are switched out with " "*/
+	for (int y = 0; y < SIZE; y++) {
+		for (int x = 0; x < SIZE; x++) {
+
+			if (x <= 1 && y <= 1)
+			{
+				cout << " ";
+			}
+
+			else if (x <= SIZE && y == 0)
+			{
+				cout << countX++;
+			}
+
+			else if (x <= SIZE && y == 1)
+			{
+				cout << "_";
+			}
+
+			else if (x == 1 && y <= SIZE)
+			{
+				cout << "|";
+			}
+
+			else if (x == 0 && y <= SIZE)
+			{
+				cout << countY++;
+			}
+
+			else if (gameBoardInfo[x][y] == 'F')
+			{
+				cout << "F";
+			}
+
+			else if (gameBoardInfo[x][y] == 'G')
+			{
+				cout << "G";
+			}
+
+			else if (gameBoardInfo[x][y] == 'B')
+			{
+				cout << "B";
+			}
+			else
+			{
+				cout << " ";
+			}
+
+			cout << " ";
+		}
+		cout << endl;
+	}
 };
 
