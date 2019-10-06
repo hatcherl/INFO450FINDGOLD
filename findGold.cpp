@@ -8,11 +8,11 @@ void gameBoard(char gameBoardInfo[SIZE][SIZE]);
 
 int main()
 {
-	bool gameOver = false;
-	int goldCount = 0;
+	bool gameOver = false; //Delecaring my gameOver bool in case of bomb
+	int goldCount = 0; //goldCount and bombCount for my loops a bit later
 	int bombCount = 0;
-	int guesses = 5;
-	char response;
+	int guesses = 5; //Using guesses for loops as well
+	char response; //Response is needed in the end to continue game
 	
 	displayBoard();
 
